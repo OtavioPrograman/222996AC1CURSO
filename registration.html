@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Inscrição no Curso</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header>
+    <h1>Inscrição no Curso</h1>
+  </header>
+  
+  <main>
+    <section class="registration-form">
+      <h2>Preencha seus dados para se inscrever no curso</h2>
+      <form id="registrationForm" onsubmit="submitForm(event)">
+        <label for="name">Nome:</label>
+        <input type="text" id="name" required>
+
+        <label for="email">E-mail:</label>
+        <input type="email" id="email" required>
+
+        <label for="phone">Telefone:</label>
+        <input type="tel" id="phone" required>
+
+        <button type="submit">Inscrever-se</button>
+      </form>
+    </section>
+  </main>
+
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script>
+    function submitForm(event) {
+  event.preventDefault();
+  const name = document.getElementById('name').value;
+  const email = document.getElementById('email').value;
+  const phone = document.getElementById('phone').value;
+  const courseId = 1;  // Assume que o curso de Desenvolvimento Web tem ID 1
+
+  const formData = {
+    name,
+    email,
+    phone,
+    courseId
+  };
+
+  // Simula um POST dos dados para a API de mock
+  $.ajax({
+    url: 'https://65074f983a38daf4803f6707.mockapi.io',  // URL da API de mock
+    method: 'POST',
+    data: formData,
+    success: function(response) {
+      alert('Inscrição realizada com sucesso!');
+    },
+    error: function(error) {
+      alert('Erro ao processar a inscrição. Tente novamente mais tarde.');
+    }
+  });
+}
+  </script>
+</body>
+</html>
